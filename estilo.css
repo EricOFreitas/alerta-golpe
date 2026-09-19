@@ -1,0 +1,181 @@
+/* ============================================================
+   Prevenção contra golpes — folha de estilo ÚNICA do site
+   Projeto Integrado IV · Engenharia de Computação · UNIFEV 2026/2
+
+   ⛔ NENHUM GRUPO EDITA ESTE ARQUIVO.
+   Ele é igual para todas as páginas de todos os grupos. É o que faz
+   as oito partes virarem um site só no fim. Se a sua página precisa
+   de um estilo que não existe aqui, fale com o professor — não crie.
+
+   Os números daqui vêm do padrão do site: corpo 18px, título 28px,
+   contraste mínimo 4.5:1, área de toque 44px, linha até 65 caracteres.
+   ============================================================ */
+
+:root{
+  --texto:        #1a1a1a;   /* sobre branco: 16:1  */
+  --fundo:        #ffffff;
+  --alerta:       #b3261e;   /* sobre branco: 6.4:1 */
+  --alerta-fundo: #fdecea;
+  --seguro:       #1b5e20;   /* sobre branco: 7.5:1 */
+  --seguro-fundo: #e8f5e9;
+  --link:         #0b5394;   /* sobre branco: 8.6:1 */
+  --borda:        #757575;
+  --cinza-fundo:  #f4f4f4;
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+
+/* Fonte do próprio celular: não baixa nada da internet, abre em 3G. */
+body{
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size:18px;              /* ⛔ nada menor que isto em lugar nenhum */
+  line-height:1.6;
+  color:var(--texto);
+  background:var(--fundo);
+  padding:0 16px 96px;         /* o 96 embaixo é o espaço da barra fixa */
+}
+
+.pagina{ max-width:65ch; margin:0 auto; }   /* linha até 65 caracteres */
+
+/* ---------- cabeçalho ---------- */
+.topo{ padding:16px 0 8px; border-bottom:2px solid var(--borda); margin-bottom:24px; }
+.topo a{ color:var(--link); font-weight:700; text-decoration:none; }
+.topo a:hover, .topo a:focus{ text-decoration:underline; }
+
+/* ---------- 1. título: a fala da pessoa ---------- */
+h1{ font-size:30px; line-height:1.25; margin:16px 0; }
+
+/* ---------- 2. a resposta em uma linha ---------- */
+.resposta{
+  background:var(--alerta-fundo);
+  border-left:6px solid var(--alerta);
+  padding:16px;
+  margin:20px 0;
+  font-size:22px;
+  font-weight:700;
+}
+
+/* ---------- 3, 4, 6. blocos comuns ---------- */
+h2{ font-size:24px; line-height:1.3; margin:32px 0 12px; }
+p{ margin:12px 0; }                       /* ⛔ nunca mais de 3 linhas */
+ul, ol{ margin:12px 0 12px 24px; }
+li{ margin:10px 0; }
+
+/* ---------- 4. o que o golpista costuma dizer ---------- */
+.fala-golpista{
+  background:var(--cinza-fundo);
+  border-left:6px solid var(--borda);
+  padding:12px 16px;
+  margin:12px 0;
+  font-style:italic;
+}
+
+/* ---------- 5. a fala segura ---------- */
+.fala-segura{
+  background:var(--seguro-fundo);
+  border-left:6px solid var(--seguro);
+  padding:16px;
+  margin:20px 0;
+  font-size:20px;
+  font-weight:700;
+}
+
+/* ---------- 6. o que fazer agora ---------- */
+.passos{ counter-reset:passo; list-style:none; margin-left:0; }
+.passos li{
+  counter-increment:passo;
+  padding:12px 12px 12px 52px;
+  position:relative;
+  border-bottom:1px solid #ddd;
+}
+.passos li::before{
+  content:counter(passo);
+  position:absolute; left:0; top:12px;
+  width:36px; height:36px; line-height:36px; text-align:center;
+  background:var(--texto); color:#fff; border-radius:50%; font-weight:700;
+}
+
+/* ---------- 7. já caiu? ---------- */
+.ja-caiu{
+  display:block;
+  min-height:44px;                 /* área de toque mínima */
+  padding:16px;
+  margin:28px 0;
+  background:var(--cinza-fundo);
+  border:2px solid var(--link);
+  border-radius:8px;
+  color:var(--link);
+  font-size:20px; font-weight:700; text-align:center; text-decoration:none;
+}
+
+/* ---------- botões e links de toque ---------- */
+.botao{
+  display:block;
+  min-height:44px;                 /* ⛔ não diminuir: dedo trêmulo erra alvo pequeno */
+  padding:14px 16px;
+  margin:12px 0;
+  border:2px solid var(--borda);
+  border-radius:8px;
+  background:var(--fundo);
+  color:var(--texto);
+  font-size:19px;
+  text-align:left; text-decoration:none;
+}
+.botao:hover, .botao:focus{ background:var(--cinza-fundo); }
+.botao.grave{ border-color:var(--alerta); background:var(--alerta-fundo); font-weight:700; }
+a{ color:var(--link); }
+
+/* ---------- barra fixa: a saída de emergência, em toda página ---------- */
+.barra-fixa{
+  position:fixed; left:0; right:0; bottom:0;
+  display:flex; gap:8px;
+  padding:10px 16px;
+  background:var(--fundo);
+  border-top:2px solid var(--borda);
+}
+.barra-fixa a{
+  flex:1;
+  min-height:44px; padding:12px 8px;
+  border-radius:8px;
+  font-size:18px; font-weight:700; text-align:center; text-decoration:none;
+}
+.barra-fixa .voltar{ border:2px solid var(--borda); color:var(--texto); }
+.barra-fixa .ligar{ background:var(--alerta); color:#fff; }
+
+/* ---------- página de telefones ---------- */
+.telefone{
+  display:block;
+  min-height:44px;
+  padding:14px 16px;
+  margin:8px 0;
+  border:2px solid var(--link);
+  border-radius:8px;
+  background:var(--fundo);
+  color:var(--link);
+  font-size:26px; font-weight:700; text-align:center; text-decoration:none;
+}
+.telefone:hover, .telefone:focus{ background:var(--cinza-fundo); }
+.sem-numero{                       /* quando não há número para discar */
+  display:block;
+  padding:14px 16px; margin:8px 0;
+  border:2px dashed var(--borda); border-radius:8px;
+  background:var(--cinza-fundo);
+  font-size:19px; font-weight:700;
+}
+
+/* ---------- imagens ---------- */
+img{ max-width:100%; height:auto; }
+
+/* ---------- tela grande: a coluna continua com 65 caracteres, mas a
+   letra cresce -- então a linha ocupa mais espaço sem ficar mais longa
+   de ler. ⛔ Não alargar a .pagina: linha comprida faz o olho perder a
+   volta, e isso é pior ainda para quem tem mais idade. ---------- */
+@media (min-width: 900px){
+  body{ font-size:20px; }
+  h1{ font-size:34px; }
+  h2{ font-size:26px; }
+  .resposta{ font-size:24px; }
+}
+
+/* ---------- foco visível: quem navega por teclado precisa ver onde está ---------- */
+a:focus, button:focus{ outline:3px solid var(--link); outline-offset:2px; }
